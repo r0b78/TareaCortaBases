@@ -7,5 +7,5 @@ Sqlite commando basicos
 
 ## Diagrama
 
-![alt text](TareaCortaBases/TareaBases.PNG)
+![alt text](/TareaBases.PNG)
     
