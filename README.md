@@ -1,0 +1,2 @@
+# TareaCortaBases
+Sqlite commando basicos
