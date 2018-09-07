@@ -36,7 +36,7 @@ SELECT Platillo.Nombre,Horario.Titulo,Horario.Fecha,COUNT (RatingPlatillo.LikeDi
 INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo  
 INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
 INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
-WHERE Fecha > DATE('now','-6 months' ,'localtime') AND RatingPlatillo.LikeDislike = 1
+WHERE Fecha < DATE('now','-6 months' ,'localtime') AND RatingPlatillo.LikeDislike = 1
 GROUP BY Platillo.Nombre
 ORDER BY Voto DESC
 LIMIT 1
@@ -61,7 +61,7 @@ INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo
 INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
 INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
 INNER JOIN Restaurante ON Horario.idRestaurante =Restaurante.idRestaurante
-WHERE Restaurante.Nombre= "Comedor" AND RatingPlatillo.LikeDislike=1
+WHERE Restaurante.Nombre= "Casa Luna" AND RatingPlatillo.LikeDislike=1
 GROUP BY Platillo.Nombre
 ORDER BY Voto DESC
 LIMIT 1
