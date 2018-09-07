@@ -1,3 +1,70 @@
+--1
+--//Por día//
+SELECT Platillo.Nombre,Horario.Titulo,Horario.Fecha,COUNT (RatingPlatillo.LikeDislike) AS Voto FROM RatingPlatillo
+INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo  
+INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
+INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
+WHERE Fecha > DATE('now','-1 day' ,'localtime') AND RatingPlatillo.LikeDislike = 1
+GROUP BY Platillo.Nombre
+ORDER BY Voto DESC
+LIMIT 1
+
+--//Por semana//
+SELECT Platillo.Nombre,Horario.Titulo,Horario.Fecha,COUNT (RatingPlatillo.LikeDislike) AS Voto FROM RatingPlatillo
+INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo  
+INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
+INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
+WHERE Fecha > DATE('now','-7 days' ,'localtime') AND RatingPlatillo.LikeDislike = 1
+GROUP BY Platillo.Nombre
+ORDER BY Voto DESC
+LIMIT 1
+
+--//Por mes//
+
+SELECT Platillo.Nombre,Horario.Titulo,Horario.Fecha,COUNT (RatingPlatillo.LikeDislike) AS Voto FROM RatingPlatillo
+INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo  
+INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
+INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
+WHERE Fecha > DATE('now','-1 month' ,'localtime') AND RatingPlatillo.LikeDislike = 1
+GROUP BY Platillo.Nombre
+ORDER BY Voto DESC
+LIMIT 1
+
+--//Por semestre//
+
+SELECT Platillo.Nombre,Horario.Titulo,Horario.Fecha,COUNT (RatingPlatillo.LikeDislike) AS Voto FROM RatingPlatillo
+INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo  
+INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
+INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
+WHERE Fecha > DATE('now','-6 months' ,'localtime') AND RatingPlatillo.LikeDislike = 1
+GROUP BY Platillo.Nombre
+ORDER BY Voto DESC
+LIMIT 1
+
+//Por todos los restaurantes//
+
+SELECT Platillo.Nombre, COUNT (RatingPlatillo.LikeDislike) AS Voto FROM RatingPlatillo
+INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo  
+INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
+INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
+INNER JOIN Restaurante ON Horario.idRestaurante =Restaurante.idRestaurante
+WHERE RatingPlatillo.LikeDislike=1
+GROUP BY Platillo.Nombre
+ORDER BY Voto DESC
+LIMIT 1
+
+
+//Por cada restaurante//
+
+SELECT  Restaurante.Nombre,Platillo.Nombre, COUNT (RatingPlatillo.LikeDislike) AS Voto FROM RatingPlatillo
+INNER JOIN Platillo ON RatingPlatillo.idPlatillo = Platillo.idPlatillo  
+INNER JOIN HorarioPlatillo ON Platillo.idPlatillo= HorarioPlatillo.idPlatillo
+INNER JOIN Horario ON HorarioPlatillo.idHorario= Horario.idHorario
+INNER JOIN Restaurante ON Horario.idRestaurante =Restaurante.idRestaurante
+WHERE Restaurante.Nombre= "Comedor" AND RatingPlatillo.LikeDislike=1
+GROUP BY Platillo.Nombre
+ORDER BY Voto DESC
+LIMIT 1
 
 --2
 --Seleccionar el horario más frecuentado por los estudiantes.
@@ -110,3 +177,9 @@ FROM 	Platillo
 --avg /sum 
 SELECT avg(Platillo.precio) as PromedioDePrecios,sum(Platillo.precio) as PrecioParaComerTodo
 FROM Platillo 
+
+
+
+
+
+----------------Aqui termina
